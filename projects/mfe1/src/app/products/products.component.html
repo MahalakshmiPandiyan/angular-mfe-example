@@ -1,0 +1,15 @@
+<h4>Products List</h4>
+ <div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of productList">
+            <div class="card col-md-3">
+                <!-- <img src="{{item.image}}" alt=""> -->
+                <h5><strong>ProductID : </strong>{{item.id}}</h5>
+                <h5 class="item1">{{item.title}}</h5>
+                <p><strong>Category : </strong>{{item.category}}</p>
+                <p><strong>Price : </strong>₹{{item.price}}</p>
+                <p><strong>Description : </strong>{{item.description}}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>

@@ -1,0 +1,35 @@
+.card-top{
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    min-width: 0;
+    word-wrap: break-word;
+    background: rgb(255, 255, 255);
+    background-clip: border-box;
+    border: 1px solid black;
+    border-radius: 2px;
+}
+
+
+.card img{
+    width: 200px;
+    height: 200px;
+    margin-bottom: 15px;
+}
+
+// .card img:hover{
+//     transition: 0.3s ease-in-out;
+//     transform: scale(1.1);
+// }
+.card{
+    padding: 20px;
+    margin: 50px;
+}
+.item1{
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis; 
+}
+h4{
+    text-align: center;
+}
