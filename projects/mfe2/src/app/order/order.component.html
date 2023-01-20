@@ -1,1 +1,15 @@
-<p>order works!</p>
+<h4>Order List</h4>
+<div class="container">
+    <div class="row">
+        <ng-container *ngFor="let item of orderList">
+            <div class="card col-md-3">
+                <p><strong>Product ID : </strong>{{item.product_id}}</p>
+                <p><strong>Product Name : </strong>{{item.title}}</p>
+                <p><strong>Price : </strong>{{item.price}}</p>
+                <p><strong>Order ID : </strong>{{item.order_id}}</p>
+                <p><strong>Quantity : </strong>{{item.quantity}}</p>
+                <p><strong>Location : </strong>{{item.location}}</p>
+            </div>
+        </ng-container>
+    </div>
+</div>
