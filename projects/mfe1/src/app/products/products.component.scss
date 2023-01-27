@@ -25,11 +25,19 @@
     padding: 20px;
     margin: 50px;
 }
-.item1{
+.item{
     white-space: nowrap;
     overflow: hidden;
     text-overflow: ellipsis; 
 }
 h4{
     text-align: center;
+}
+
+
+select{
+    // margin-left: 800px;
+    float: right;
+    width: 290px;
+    height: 30px;
 }

@@ -4,6 +4,12 @@ import { HttpClientModule } from '@angular/common/http';
 
 import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
+import { StoreModule } from '@ngrx/store';
+import { EffectsModule } from '@ngrx/effects';
+import { postEffects } from './products/state/product.efforts';
+import { productReducer } from './products/state/product.reducer';
+import { StoreDevtoolsModule } from '@ngrx/store-devtools';
+import { ProductsModule } from './products/products.module';
 
 @NgModule({
   declarations: [
@@ -12,7 +18,14 @@ import { AppComponent } from './app.component';
   imports: [
     BrowserModule,
     AppRoutingModule,
-    HttpClientModule
+    HttpClientModule,
+    ProductsModule,
+    StoreModule.forRoot({}),
+    StoreDevtoolsModule.instrument({
+      logOnly: true,
+    }),
+    EffectsModule.forRoot([]),
+
   ],
   providers: [],
   bootstrap: [AppComponent]

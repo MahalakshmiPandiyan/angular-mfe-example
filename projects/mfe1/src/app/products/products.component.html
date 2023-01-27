@@ -1,14 +1,26 @@
 <h4>Products List</h4>
- <div class="container">
+<div class="container">
     <div class="row">
-        <ng-container *ngFor="let item of productList">
+        <div class="col-md-12">
+            <select [(ngModel)]="filteredString">
+                <option value="" disabled selected hidden>Filter based on Category</option>
+                <option *ngFor="let option of options" [value]="option">
+                  {{option}}
+                </option>
+            </select>
+            <button class="btn btn-primary" (click)="addNewProduct()">Add new product</button>
+        </div>
+    </div>
+  
+    <div class="row">
+        <ng-container *ngFor="let item of productList | async | filter:filteredString">
             <div class="card col-md-3">
-                <img src="{{item.image}}" alt="">
+                <!-- <img src="{{item.image}}" alt=""> -->
                 <h5><strong>ProductID : </strong>{{item.id}}</h5>
                 <h5 class="item1">{{item.title}}</h5>
                 <p><strong>Category : </strong>{{item.category}}</p>
                 <p><strong>Price : </strong>₹{{item.price}}</p>
-                <p><strong>Description : </strong>{{item.description}}</p>
+                <p class="item"><strong>Description : </strong>{{item.description}}</p>
             </div>
         </ng-container>
     </div>
