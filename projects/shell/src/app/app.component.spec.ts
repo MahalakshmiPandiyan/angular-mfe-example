@@ -1,8 +1,12 @@
-import { TestBed } from '@angular/core/testing';
+import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { RouterTestingModule } from '@angular/router/testing';
 import { AppComponent } from './app.component';
 
 describe('AppComponent', () => {
+  let component: AppComponent;
+  let fixture: ComponentFixture<AppComponent>;
+  const mockdata="admin123@gmail.com"
+
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       imports: [
@@ -12,6 +16,13 @@ describe('AppComponent', () => {
         AppComponent
       ],
     }).compileComponents();
+  });
+
+  beforeEach(async () =>{
+    fixture = TestBed.createComponent(AppComponent);
+    component = fixture.componentInstance;
+    // component.localStorageGetItem = "admin123@gmail.com";
+    // fixture.detectChanges();
   });
 
   it('should create the app', () => {
@@ -26,10 +37,18 @@ describe('AppComponent', () => {
     expect(app.title).toEqual('shell');
   });
 
-  it('should render title', () => {
-    const fixture = TestBed.createComponent(AppComponent);
+  it("getItem",async() => {
     fixture.detectChanges();
-    const compiled = fixture.nativeElement as HTMLElement;
-    expect(compiled.querySelector('.content span')?.textContent).toContain('shell app is running!');
-  });
+    fixture.whenStable().then(() => {
+      expect(component).toBeTruthy();
+    });
+    component.localStorageGetItem="";
+    
+    expect(component.email).toBeFalse();
+  })
+  
+  it("logout",() =>{
+    component.logout();
+    expect(localStorage.clear()).toBeUndefined();
+  })
 });

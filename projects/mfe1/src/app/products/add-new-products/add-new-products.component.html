@@ -1,1 +1,46 @@
-<p>add-new-products works!</p>
+<div class="container">
+	<form [formGroup]="addNewProduct" (ngSubmit)="onSubmit()" novalidate>
+	  <!-- <div class="form-group">
+			<label for="exampleInputid1">Id</label>
+      <input type="number" class="form-control" id="id" formControlName="id" placeholder="Enter id">
+      <small class="form-text" *ngIf="addNewProduct.get('id')?.touched && addNewProduct.get('id')?.errors">
+        Enter Id!!!
+    </small>
+    </div> -->
+    
+    <div class="form-group">
+      <label for="exampleInputtitle1">Title</label>
+      <input type="text" class="form-control" id="title" formControlName="title" placeholder="title">
+      <small class="form-text" *ngIf="addNewProduct.get('title')?.touched && addNewProduct.get('title')?.errors">
+        Enter title!!!
+    </small>
+    </div>
+    
+    <div class="form-group">
+	  <label for="exampleInputid1">Price</label>
+      <input type="number" class="form-control" id="price" formControlName="price" placeholder="Enter price">
+      <small class="form-text" *ngIf="addNewProduct.get('price')?.touched && addNewProduct.get('price')?.errors">
+        Enter Price!!!
+    </small>
+    </div>
+
+    <div class="form-group">
+        <label for="exampleInputid1">Description</label>
+        <input type="text" class="form-control" id="description" formControlName="description" placeholder="Enter description">
+        <small class="form-text" *ngIf="addNewProduct.get('description')?.touched && addNewProduct.get('description')?.errors">
+          Enter description!!!
+      </small>
+    </div>
+
+    <div class="form-group">
+	  <label for="exampleInputid1">Category</label>
+      <input type="text" class="form-control" id="category" formControlName="category" placeholder="Enter category">
+      <small class="form-text" *ngIf="addNewProduct.get('category')?.touched && addNewProduct.get('category')?.errors">
+        Enter category!!!
+    </small>
+    </div>
+    
+    <br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

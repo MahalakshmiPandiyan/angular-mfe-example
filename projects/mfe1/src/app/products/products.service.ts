@@ -7,8 +7,12 @@ import { HttpClient } from '@angular/common/http';
 export class ProductsService {
 
   constructor(private http:HttpClient) { }
-
+  readonly baseUrl='http://localhost:3000/';
   getProduct(){
-    return this.http.get("https://273fe632-a99d-4e78-8c3d-a650fa92b632.mock.pstmn.io/products")
+    return this.http.get(this.baseUrl+"products")
+  }
+
+  addNewProduct(value:any){
+    return this.http.post(this.baseUrl+"products",value)
   }
 }

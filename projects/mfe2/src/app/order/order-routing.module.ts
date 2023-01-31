@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+import { AuthGuard } from 'projects/auth/src/public-api';
 import { OrderComponent } from './order.component';
 
 const routes: Routes = [
@@ -10,6 +11,7 @@ const routes: Routes = [
 },
 {
     path: 'mfe2',
+    // canActivate:[AuthGuard],
     component: OrderComponent
 }
 ];

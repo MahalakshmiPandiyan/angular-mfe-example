@@ -8,3 +8,11 @@ export interface AppState {
 export const appReducer = {
     products : productReducer
 }
+
+export interface ProductList{
+    id:number,
+    title: string,
+    price: number,
+    description: string,
+    category: string
+}

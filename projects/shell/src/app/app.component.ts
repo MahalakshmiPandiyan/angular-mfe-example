@@ -8,10 +8,11 @@ import { Component, OnInit } from '@angular/core';
 export class AppComponent implements OnInit {
   title = 'shell';
   email: any = '';
+  localStorageGetItem: string | null='';
 
   ngOnInit() {
-    // this.email = localStorage.getItem('email')
-    if(localStorage.getItem('email')!==null){
+    this.localStorageGetItem=localStorage.getItem('email')
+    if(this.localStorageGetItem!==null){
       this.email=true;
     }
     else{
@@ -22,6 +23,6 @@ export class AppComponent implements OnInit {
   }
   logout(){
     localStorage.clear();
-    window.location.reload();
+    // window.location.reload();
   }
 }

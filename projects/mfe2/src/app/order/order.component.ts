@@ -1,5 +1,10 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
+import { Store } from '@ngrx/store';
 import { OrderService } from './order.service';
+import { getAllOrders } from './state/order.action';
+import { getOrders } from './state/order.selector';
+import { AppState } from './store/app.state';
 
 @Component({
   selector: 'app-order',
@@ -8,12 +13,10 @@ import { OrderService } from './order.service';
 })
 export class OrderComponent implements OnInit {
   public orderList:any;
-  constructor(private ordersService:OrderService) { }
+  constructor(private store : Store<AppState>) { }
   ngOnInit(): void {
-    this.ordersService.getOrder().subscribe(res=>{
-        this.orderList=res;
-    })
-    console.log("orderList",this.orderList);
-    
+    this.store.dispatch(getAllOrders());
+    this.orderList = this.store.select(getOrders);
+    console.log("orderListtt",this.orderList);
   }
 }

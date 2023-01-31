@@ -2,7 +2,7 @@
 <div class="container">
     <div class="row">
         <div class="col-md-12">
-            <select [(ngModel)]="filteredString">
+            <select (click)="filter()" [(ngModel)]="filteredString">
                 <option value="" disabled selected hidden>Filter based on Category</option>
                 <option *ngFor="let option of options" [value]="option">
                   {{option}}
@@ -13,9 +13,8 @@
     </div>
   
     <div class="row">
-        <ng-container *ngFor="let item of productList | async | filter:filteredString">
+        <ng-container *ngFor="let item of productList">
             <div class="card col-md-3">
-                <!-- <img src="{{item.image}}" alt=""> -->
                 <h5><strong>ProductID : </strong>{{item.id}}</h5>
                 <h5 class="item1">{{item.title}}</h5>
                 <p><strong>Category : </strong>{{item.category}}</p>

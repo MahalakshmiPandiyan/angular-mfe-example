@@ -7,7 +7,8 @@ import { Injectable } from '@angular/core';
 export class OrderService {
 
   constructor(private http:HttpClient) { }
+  readonly baseUrl='http://localhost:3000/';
 
   getOrder(){
-    return this.http.get("https://155f12d0-1061-4d48-b06e-d7bb6a441074.mock.pstmn.io/orders")
+    return this.http.get(this.baseUrl+"orders")
   }}

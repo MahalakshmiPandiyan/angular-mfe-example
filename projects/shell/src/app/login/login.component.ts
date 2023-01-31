@@ -11,16 +11,17 @@ import { AuthService } from './auth.service';
 export class LoginComponent {
   loginForm: FormGroup;
   msg:any
+  output:any;
   constructor(private authService:AuthService, private route:Router) {
     this.loginForm = new FormGroup({
-      email: new FormControl('', [Validators.required, Validators.email]),
-      password: new FormControl('', [Validators.required])
+      email: new FormControl('',{nonNullable:true,validators:[Validators.required]}),
+      password: new FormControl('', {nonNullable:true,validators:[Validators.required]})
     });
   }
 
   onSubmit() {
-    var output=this.authService.checkUser(this.loginForm.value["email"],this.loginForm.value["password"]);
-    if(output===true){
+     this.output=this.authService.checkUser(this.loginForm.value["email"],this.loginForm.value["password"]);
+    if(this.output===true){
       this.route.navigate(['products']).then(()=>{
         window.location.reload();
       })

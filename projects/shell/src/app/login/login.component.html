@@ -1,0 +1,22 @@
+<h4 class="text-center">Login Form</h4>
+
+<div class="container">
+	<form [formGroup]="loginForm" (ngSubmit)="onSubmit()" novalidate>
+		<div class="form-group">
+			<label for="exampleInputEmail1">Email address</label>
+      <input type="email" class="form-control" id="email" formControlName="email" placeholder="Enter email">
+      <small class="form-text" *ngIf="loginForm.get('email')?.touched && loginForm.get('email')?.errors">
+        Please enter email address!!!
+    </small>
+    </div>
+    
+    <div class="form-group">
+      <label for="exampleInputPassword1">Password</label>
+      <input type="password" class="form-control" id="password" formControlName="password" placeholder="Password">
+      <small class="form-text" *ngIf="loginForm.get('password')?.touched && loginForm.get('password')?.errors">
+        Please enter password!!!
+    </small>
+    </div><br>
+    <button type="submit" class="btn btn-primary">Submit</button>
+  </form>
+</div>

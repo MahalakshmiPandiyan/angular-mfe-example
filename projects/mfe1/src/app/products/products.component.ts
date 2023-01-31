@@ -5,7 +5,8 @@ import { Observable } from 'rxjs';
 import { ProductsService } from './products.service';
 import { getAllProducts } from './state/product.action';
 import { getProducts } from './state/product.selector';
-import { AppState } from './store/app.state';
+import { AppState, ProductList } from './store/app.state';
+import { filter } from 'rxjs/operators';  
 
 @Component({
   selector: 'app-products',
@@ -23,11 +24,11 @@ export class ProductsComponent implements OnInit{
 
   ngOnInit(): void {
     this.store.dispatch(getAllProducts());
-    this.productList = this.store.select(getProducts);
-    // this.productsService.getProduct().subscribe(res=>{
-      //     this.productList=res;
-    // })
-    console.log("productList",this.productList);
+    this.store.select(getProducts).subscribe((data)=>{
+      this.productList  = data;    
+    });
+    console.log("productListttttt",this.productList);
+
   }
   options = ["men's clothing","jewelery","electronics","women's clothing","all"]
 
@@ -35,6 +36,31 @@ export class ProductsComponent implements OnInit{
 
   addNewProduct(){
     this.router.navigate(["products/add"])
+  }
+  filter(){
+    console.log("fghjk",this.filteredString);
+
+    this.store.select(getProducts).subscribe((data)=>{
+      this.productList  = data;
+      console.log("data",data);
+      console.log("productListttttt",this.productList);
+
+      if(this.filteredString==="all"){
+        this.productList=data
+      }
+      else{
+        this.productList = this.productList.filter((products: { category: string; }) =>  products.category === this.filteredString);  
+        console.log("example",this.productList);
+      }
+    });
+    
+    // this.productList = this.productList.pipe(filter((products: { category: string; }) =>  products.category === this.filteredString));  
+    // const subscribe = this.productList.subscribe((val: any) => console.log(`Even number: ${val}`));  
+    // console.log(this.productList);
+    // this.productList.subscribe((val:any)=>{
+    //   console.log("vallllll ",val);
+    // })
+    
   }
 
 }
