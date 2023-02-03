@@ -1,20 +1,25 @@
 import { ComponentFixture, TestBed } from '@angular/core/testing';
 import { FormGroup, FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { Router } from '@angular/router';
+import { RouterTestingModule } from '@angular/router/testing';
 
 import { LoginComponent } from './login.component';
 
 describe('LoginComponent', () => {
   let component: LoginComponent;
   let fixture: ComponentFixture<LoginComponent>;
+  let router: Router;
 
   beforeEach(async () => {
     await TestBed.configureTestingModule({
       declarations: [ LoginComponent ],
-      imports: [FormsModule,ReactiveFormsModule]
+      imports: [FormsModule,ReactiveFormsModule,RouterTestingModule.withRoutes([]),
+    ]
     })
     .compileComponents();
 
     fixture = TestBed.createComponent(LoginComponent);
+    router = TestBed.inject(Router);
     component = fixture.componentInstance;
     fixture.detectChanges();
   });
@@ -83,6 +88,12 @@ describe('LoginComponent', () => {
       "password": "admin123"
     };
     component.loginForm.setValue(formData);
+    const spy = spyOn(router, 'navigate');
     component.onSubmit();
+    component.output=true;
+    expect(component.output).toBeTrue();
+    console.log("spy.calls.first().args[0]",(spy.calls.first().args[0]).toString().replace("[","").replace("'",""));
+    
+    expect((spy.calls.first().args[0]).toString().replace("[","").replace("'","")).toContain("products");
   });
 });

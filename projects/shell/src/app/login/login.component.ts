@@ -22,9 +22,8 @@ export class LoginComponent {
   onSubmit() {
      this.output=this.authService.checkUser(this.loginForm.value["email"],this.loginForm.value["password"]);
     if(this.output===true){
-      this.route.navigate(['products']).then(()=>{
-        window.location.reload();
-      })
+      this.route.navigate(['products'])
+     
     }
     else{
       this.msg = "Invalid";

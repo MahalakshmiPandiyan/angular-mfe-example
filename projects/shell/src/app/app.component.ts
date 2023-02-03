@@ -19,10 +19,8 @@ export class AppComponent implements OnInit {
       this.email=false;
     }
     console.log("this.email,",localStorage.getItem('email'));
-    console.log("this.email,",this.email);
   }
   logout(){
-    localStorage.clear();
-    // window.location.reload();
+    localStorage.clear()
   }
 }
